@@ -44,37 +44,7 @@
 
     <script type="text/javascript">
 
-      // Whenever the button is clicked
-      document.getElementById("submit").onclick = function(){
-
-        // Read the inputs
-        var opa = parseFloat(document.getElementById("ina").value);
-        var opb = parseFloat(document.getElementById("inb").value);
-
-        // Read the operation selected on the radio buttons
-        var selectedOp;
-        var radios = document.getElementsByName("op");
-        for(i = 0; i < radios.length; i++){
-          if(radios[i].checked){
-            selectedOp = radios[i].value;
-            break;
-          }
-        }
-
-        // Calculate the result
-        var res;
-        switch(selectedOp){
-          case "add": { res = opa + opb; break; }
-          case "sub": { res = opa - opb; break; }
-          case "mul": { res = opa * opb; break; }
-          case "div": { res = opa / opb; break; }
-        }
-
-        // Update the result
-        document.getElementById("result").innerHTML = res;
-
-      }
-
+      
     </script>
   </body>
 </html>
