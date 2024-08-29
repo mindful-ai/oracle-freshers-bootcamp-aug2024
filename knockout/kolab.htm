@@ -39,32 +39,7 @@
 
 
     <script>
-        //viewmodel
-        function viewModel(){
-            var self = this;
         
-            self.number1 = ko.observable();
-            self.number2 = ko.observable();
-            self.result = ko.computed(function() {
-                var num2 = parseFloat(isValidValue(self.number2(),'2nd'));
-                console.log("num2 : "+num2)
-                var num1 = parseFloat(isValidValue(self.number1(),'1st'));
-                console.log("num1 : "+num1)
-                return ((num1**2) + (num2**2));
-            },self);
-        }
-        function isValidValue(val,s) {
-            var v1 = val;
-            console.log("val outside: "+val+" "+s)
-            if (val == null || isNaN(val)){
-                v1 = 0
-                console.log("val inside: "+val)
-            }
-            console.log("val : "+v1)
-            return v1;
-        };
-        //binding call
-        ko.applyBindings(new viewModel());
         
     </script>
 </body>
