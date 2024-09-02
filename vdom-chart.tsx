@@ -25,6 +25,26 @@ const chartItem = (item: ojChart.ItemTemplateContext) => {
             <oj-chart data={chartDP} type={'bar'}>
                 <template slot={'itemTemplate'} render={chartItem}></template> 
             </oj-chart>
+----------------------------------------------------------------------------------
+
+const chartTypes = [
+    {value: "bar", label: "Bar"},
+    {value: "pie", label: "Pie"},
+    {value: "sccater", label: "Scatter"},
+    {value: "pyramid", label: "Pyramid"},
+]
+const chartTypeDP = new MutableArrayDataProvider(chartTypes, {keyAttributes: "value"});
         </div>
+
+----------------------------------------------------------------------------------
+<oj-select-single data={chartTypeDP} 
+                              value={val}
+                              onvalueChanged={valChangeHandler}></oj-select-single>
+
+----------------------------------------------------------------------------------
+const [val, setVal] = useState('pie' as ojChart.ChartType);
+    const valChangeHandler = useCallback((event:any) => {
+        setVal(event.detail.value);
+    }, [val, setVal])
 
 ----------------------------------------------------------------------------------
