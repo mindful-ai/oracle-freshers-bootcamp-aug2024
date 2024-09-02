@@ -1,0 +1,89 @@
+/**
+ * @license
+ * Copyright (c) 2014, 2024, Oracle and/or its affiliates.
+ * Licensed under The Universal Permissive License (UPL), Version 1.0
+ * as shown at https://oss.oracle.com/licenses/upl/
+ * @ignore
+ */
+import { h } from "preact";
+
+/*
+export function Content() {
+  return (
+    <div class="oj-web-applayout-max-width oj-web-applayout-content">
+      <h3>This is my first experiment in VDOM!</h3>
+    </div>
+  );
+};
+*/
+
+import { createElement, render } from 'preact';
+
+/*
+let vdom = createElement(
+  'h3', { class:'big' }, 'Hello World!' 
+);
+*/
+
+let vdom = <h3 class='big'>Hello World from TSX!</h3>; // TSX
+
+let value = Math.random() > 0.5 ? 'BIG' : 'small';
+let vdom2 = <h3 class={value}>Hello World from TSX! { 3 + 2 }</h3>;
+
+function clickAction(){
+  console.log("The button was clicked!");
+}
+
+import { useState } from 'preact/hooks';
+
+function App_(){
+
+  let i = 0;
+  let [count, setCount] = useState(0);
+
+  const increment = () => {
+    i += 1;
+    setCount(count + 1);
+    console.log("i  =  ", i);
+  }
+
+  return(
+    <div>
+      <h1 style='color: green'>The VDOM Application</h1>
+      <h3 class={value}>Hello World from TSX! { 3 + 3 }</h3>
+      <h3>Count: {count} I: {i}</h3>
+      <button onClick={increment}>Click Me</button>
+    </div>
+  )
+}
+
+// -----------------------------------------------------------------------
+
+function CustomButton(props:any){
+  return(
+    <button style={props.style} onClick={props.onClick}>{props.children}</button>
+  )
+}
+
+export function Content(){
+
+  let i = 0;
+  let [count, setCount] = useState(0);
+
+  const increment = () => {
+    i += 1;
+    setCount(count + 1);
+    console.log("i  =  ", i);
+  }
+
+  return(
+    <div>
+      <h1 style='color: green'>The VDOM Application</h1>
+      <h3 class={value}>Hello World from TSX! { 3 + 3 }</h3>
+      <h3>Count: {count} I: {i}</h3>
+      <CustomButton style={{color: 'purple'}} onClick={increment}>CLICK</CustomButton>
+    </div>
+  )
+}
+
+//render(<App />, document.body);
