@@ -1,0 +1,42 @@
+
+import { h } from "preact";
+import { useState, useCallback } from "preact/hooks";
+
+import "ojs/ojinputnumber";
+import "ojs/ojformlayout";
+
+
+
+export function Content(){
+
+    const [fValue, setFValue] = useState(0);
+    const [cValue, setCValue] = useState(0);
+
+    const updateFValue = (event: any) => {
+        setCValue(event.target.value);
+        setFValue(event.target.value * 1.8 + 32);
+        console.log("Update F Value -> ", event.target.value * 1.8 + 32);
+    };
+
+    const updateCValue = (event: any) => {
+        setCValue((event.target.value - 32) / 1.8);
+        setFValue(event.target.value);
+        console.log("Update C Value -> ", (event.target.value - 32) / 1.8);
+    };
+
+    return(
+        <div style="border: 2px solid black; border-radius: 10px; padding: 5%; margin 5%">
+            <h3>Temperature Converter</h3>
+            
+            <oj-form-layout max-columns="2" direction="row">
+              <oj-input-number step={1} value={cValue} onvalueChanged={updateFValue} label-hint="Celcius"></oj-input-number>
+              <oj-input-number step={1} value={fValue} onvalueChanged={updateCValue} label-hint="Fahrenheit"></oj-input-number>
+            </oj-form-layout> 
+
+            {/*}
+            <div><input min={-1000} max={1000} type="number" onChange={updateFValue} value={cValue}/></div>
+        <div><input min={-1000} max={1000} type="number" value={fValue}  onChange={updateCValue} /></div> */}
+            
+        </div>
+    )
+}
